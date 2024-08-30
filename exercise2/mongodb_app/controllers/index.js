@@ -5,9 +5,10 @@
 
 import userControllers from './userControllers.js';
 
-const { getUsers, createUser } = userControllers;
+const { getUsers, createUser, deleteUser } = userControllers;
 
 export default {
     getUsers,
-    createUser
+    createUser,
+    deleteUser
 };
