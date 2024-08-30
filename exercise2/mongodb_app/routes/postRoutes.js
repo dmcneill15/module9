@@ -21,4 +21,9 @@ router.post('/create', (req, res) => {
 router.delete('/delete/:postId', (req,res) => {
     postControllers.deletePost(req, res)
 })
+
+router.get('/userposts/:userId', (req, res) => {
+    postControllers.getUserPosts(req, res)
+})
+
 export default router;

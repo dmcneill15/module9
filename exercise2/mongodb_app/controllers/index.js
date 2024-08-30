@@ -7,7 +7,7 @@ import userControllers from './userControllers.js';
 import postControllers from './postControllers.js';
 
 const { getUsers, createUser, deleteUser } = userControllers;
-const {getPosts, createPost, deletePost} = postControllers;
+const {getPosts, createPost, deletePost, getUserPosts} = postControllers;
 
 export default {
     getUsers,
@@ -15,5 +15,6 @@ export default {
     deleteUser,
     getPosts,
     createPost,
-    deletePost
+    deletePost,
+    getUserPosts
 };

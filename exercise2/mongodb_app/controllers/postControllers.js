@@ -49,7 +49,8 @@ const deletePost = (req, res) => {
 
 const getUserPosts = (req, res) => {
     // finds all posts for a given user and populates with user details
-    Models.Post.find({ userId: req.params.userId }).populate({ path: 'userId' })
+    //'userId', 'userName emailId'
+    Models.Post.find({ userId: req.params.userId }).populate({path:'userId'})
         .then((data) => res.send({ result: 200, data: data }))
         .catch((err) => {
             console.log(err);
