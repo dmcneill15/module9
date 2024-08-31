@@ -26,4 +26,5 @@ router.get('/userposts/:userId', (req, res) => {
     postControllers.getUserPosts(req, res)
 })
 
+
 export default router;

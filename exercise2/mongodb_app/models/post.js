@@ -10,8 +10,8 @@ const postSchema = new Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } //// foreign key needs ObjectId type and a 'ref' to the referenced schema
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, //// foreign key needs ObjectId type and a 'ref' to the referenced schema
 });
-const Post = mongoose.model("post", postSchema);
+const Post = mongoose.model("Post", postSchema);
 
 export default Post;

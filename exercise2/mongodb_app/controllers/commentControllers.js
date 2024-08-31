@@ -2,8 +2,8 @@
 import Models from "../models/index.js";
 import mongoose from 'mongoose'
 
-const getPosts = (res) => {
-    Models.Post.find({})
+const getComments = (res) => {
+    Models.Comment.find({})
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -11,12 +11,13 @@ const getPosts = (res) => {
         })
 }
 
-const createPost = (data, res) => {
+const createComment = (data, res) => {
     console.log(data)
     //Convert the userId to an ObjectId before saving the post.
     data.userId = new mongoose.Types.ObjectId(data.userId);
+    data.postId = new mongoose.Types.ObjectId(data.postId);
 
-    new Models.Post(data).save()
+    new Models.Comment(data).save()
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -24,21 +25,21 @@ const createPost = (data, res) => {
         })
 }
 
-const deletePost = (req, res) => {
-    let postId = req.params.postId;
+const deleteComment = (req, res) => {
+    let commentId = req.params.commentId;
 
-    Models.Post.findOne({ postId: postId })
+    Models.Comment.findOne({ commentId: commentId })
         .then(user => {
             if (user) {
-                return Models.Post.deleteOne({ postId: postId });
+                return Models.Comment.deleteOne({ commentId: commentId });
             } else {
-                res.send({ result: 404, message: "Post not found" });
+                res.send({ result: 404, message: "Comment not found" });
                 return null;
             }
         })
         .then(result => {
             if (result) {
-                res.send({ result: 200, message: "Post deleted successfully" });
+                res.send({ result: 200, message: "Comment deleted successfully" });
             }
         })
         .catch(err => {
@@ -47,10 +48,9 @@ const deletePost = (req, res) => {
         });
 }
 
-const getUserPosts = (req, res) => {
-    // finds all posts for a given user and populates with user details
-    //'userId', 'userName emailId'
-    Models.Post.find({ userId: req.params.userId }).populate({path:'userId'})
+const getPostComments = (req, res) => {
+    // finds all comments for one post
+    Models.Comment.find({ postId: req.params.postId }).populate({path:'postId'})
         .then((data) => res.send({ result: 200, data: data }))
         .catch((err) => {
             console.log(err);
@@ -60,8 +60,8 @@ const getUserPosts = (req, res) => {
 
 
 export default {
-    getPosts,
-    createPost,
-    deletePost,
-    getUserPosts,
+    getComments,
+    createComment,
+    deleteComment,
+    getPostComments,
 }
