@@ -8,7 +8,7 @@ async function init() {
     await User.sync(); // sync the model
     await Post.sync(); // sync the model
     await Comment.sync();
-    await Like().sync();
+    await Like.sync(); // sync the model
 
     // also sync any extra models here
     Post.belongsTo(User, { foreignKey: 'userId' });
