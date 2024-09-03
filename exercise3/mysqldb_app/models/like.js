@@ -13,7 +13,7 @@ Like.init({
     updatedAt: { type: DataTypes.DATE, defaultValue: Sequelize.NOW }
 },
     {
-        sequelize, modelName: 'posts', // use lowercase plural format 
+        sequelize, modelName: 'likes', // use lowercase plural format 
         timestamps: true, freezeTableName: true
     },
 )

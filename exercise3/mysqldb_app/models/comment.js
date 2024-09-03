@@ -14,7 +14,7 @@ Comment.init({
     updatedAt: { type: DataTypes.DATE, defaultValue: Sequelize.NOW }
 },
     {
-        sequelize, modelName: 'posts', // use lowercase plural format 
+        sequelize, modelName: 'comments', // use lowercase plural format 
         timestamps: true, freezeTableName: true
     },
 )

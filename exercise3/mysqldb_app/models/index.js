@@ -9,6 +9,7 @@ async function init() {
     await Post.sync(); // sync the model
     await Comment.sync();
     await Like().sync();
+
     // also sync any extra models here
     Post.belongsTo(User, { foreignKey: 'userId' });
     Comment.belongsTo(Post, { foreignKey: 'postId' });
